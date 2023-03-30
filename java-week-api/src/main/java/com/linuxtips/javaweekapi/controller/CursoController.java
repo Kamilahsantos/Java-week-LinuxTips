@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api")
 public class CursoController {
 
     public CursoController(CursoService cursoService) {
@@ -27,25 +27,37 @@ public class CursoController {
 
     @GetMapping("/cursos")
     @ResponseStatus(HttpStatus.OK)
-    public List<Curso> listarCurso() {
+    public List<Curso> listarCursos() {
         return cursoService.listarCursos();
     }
 
+
     @GetMapping("/cursos/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Curso> buscarProdutoPeloId(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<Curso> buscarCursoPeloId
+            (@PathVariable(value = "id") Long id) {
         return cursoService.buscarCursoPeloId(id);
+
     }
+
 
     @PutMapping("/cursos/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Curso> atualizarProdutoPeloId(@PathVariable(value = "id") Long id, @RequestBody Curso curso) {
+    public ResponseEntity<Curso> atualizarCursoPeloId
+            (@PathVariable(value = "id") Long id,
+             @RequestBody Curso curso) {
         return cursoService.atualizarCursoPeloId(curso, id);
+
     }
+
 
     @DeleteMapping("/cursos/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Object> apagarCursoPeloId(@PathVariable(value = "id") Long id) {
-        return cursoService.apagarCursoId(id);
+    public ResponseEntity<Object> excluirCursoPeloId
+            (@PathVariable(value = "id") Long id) {
+        return cursoService.excluirCursoPeloId(id);
+
     }
+
+
 }

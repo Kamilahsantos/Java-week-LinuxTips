@@ -2,6 +2,7 @@ package com.linuxtips.javaweekapi.model;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name = "curso")
 public class Curso {
@@ -9,14 +10,6 @@ public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String nome;
-
-    @Column(nullable = false)
-    private Double preco;
-
-    @Column(nullable = false)
-    private String pessoaInstrutora;
 
     public Long getId() {
         return id;
@@ -49,6 +42,16 @@ public class Curso {
     public void setPessoaInstrutora(String pessoaInstrutora) {
         this.pessoaInstrutora = pessoaInstrutora;
     }
+
+    @Column(nullable = false)
+    private String nome;
+
+
+    @Column(nullable = false)
+    private Double preco;
+
+    @Column(nullable = false)
+    private String pessoaInstrutora;
 
 
 }

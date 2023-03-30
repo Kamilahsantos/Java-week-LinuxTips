@@ -16,37 +16,47 @@ public class CursoService {
 
     private CursoRepository cursoRepository;
 
-    public Curso criarCurso (Curso curso){
+    public Curso criarCurso(Curso curso){
         return cursoRepository.save(curso);
     }
-    public List<Curso> listarCursos() {
-        return cursoRepository.findAll();
+
+
+    public List<Curso> listarCursos(){
+        return  cursoRepository.findAll();
     }
 
-    public ResponseEntity<Curso> buscarCursoPeloId(Long id) {
+    public ResponseEntity<Curso> buscarCursoPeloId
+            (Long id){
         return cursoRepository.findById(id)
-                .map(task -> ResponseEntity.ok().body(task))
+                .map(curso -> ResponseEntity.ok().body(curso))
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    public ResponseEntity<Curso> atualizarCursoPeloId(Curso curso, Long id) {
+
+    public ResponseEntity<Curso> atualizarCursoPeloId(Curso curso, Long id){
         return cursoRepository.findById(id)
-                .map(produtoToUpdate -> {
-                    produtoToUpdate.setNome(curso.getNome());
-                    produtoToUpdate.setPreco(curso.getPreco());
-                    produtoToUpdate.setPessoaInstrutora(curso.getPessoaInstrutora());
-                    Curso updated = cursoRepository.save(produtoToUpdate);
+                .map(cursoToUpdate -> {
+                    cursoToUpdate.setNome(curso.getNome());
+                    cursoToUpdate.setPessoaInstrutora(curso.getPessoaInstrutora());
+                    cursoToUpdate.setPreco(curso.getPreco());
+                    Curso updated = cursoRepository.save(cursoToUpdate);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
     }
 
-    public ResponseEntity<Object> apagarCursoId(Long id) {
+
+    public ResponseEntity<Object> excluirCursoPeloId
+            (Long id){
         return cursoRepository.findById(id)
-                .map(produtoToDelete -> {
+                .map(cursoToDelete -> {
                     cursoRepository.deleteById(id);
                     return ResponseEntity.noContent().build();
                 }).orElse(ResponseEntity.notFound().build());
-
     }
+
+
+
+
+
 
 }
