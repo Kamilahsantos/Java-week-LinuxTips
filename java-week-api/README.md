@@ -10,3 +10,10 @@ sdk install java 19.0.2-open
 
 
 
+### Links uteis:
+https://developer.mozilla.org/pt-BR/docs/Glossary/REST
+https://developer.mozilla.org/pt-BR/docs/Glossary/API
+https://developer.mozilla.org/pt-BR/docs/Glossary/CRUD
+https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status
+https://http.cat/
+https://http.dog/
